@@ -1,0 +1,53 @@
+<div class="col-md-12">
+  <div class="card card-container">
+
+    <div class="text-center">
+      <fa-icon [icon]="faLock" class="fa-3x"></fa-icon>
+    </div>
+    
+    <div class="text-center">
+      <h2>Welcome</h2>
+    </div>
+
+    <div class="text-center">
+      <h5>Sign Up</h5>
+    </div>
+
+    <form (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" name="name" id="name" [(ngModel)]="register.name" required minlength="3"
+          maxlength="20" autocomplete="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="userName">Username</label>
+        <input type="text" class="form-control" name="userName" id="userName" [(ngModel)]="register.userName" required
+          minlength="3" maxlength="20" autocomplete="userName" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" name="email" id="email" [(ngModel)]="register.email" required email
+          autocomplete="email" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="register.password"
+          required autocomplete="current-password" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+      </div>
+
+    </form>
+
+    <div class="card-footer text-right">
+      <small>Ohh I remember <a routerLink="../login">Back to Login</a></small>
+    </div>
+
+  </div>
+</div>
