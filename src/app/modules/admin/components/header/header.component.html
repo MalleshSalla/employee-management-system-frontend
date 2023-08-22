@@ -1,11 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
     <div class="container">
-        <a class="navbar-brand" routerLink="company">Admin </a>
-
+        
+        <a class="navbar-brand" routerLink="company">{{roleAndName}}</a>  
+    
         <div class="collapse navbar-collapse d-flex" id="navbarResponsive">
 
             <ul class="navbar-nav ml-auto">
+
+              
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" ariaCurrentWhenActive="page" routerLink="./company">Company
                     </a>
@@ -16,26 +18,23 @@
                 <li class="nav-item" routerLinkActive="active">
                     <a class="nav-link" ariaCurrentWhenActive="page" routerLink="./employees">Employees</a>
                 </li>
-            </ul>     
-            
-            <ul class="navbar-nav ml-auto navbar-dark bg-dark">
                 <li class="nav-item" routerLinkActive="active">
-                    <select (change)="navigateToLink($event.target)">
-                        <option value="" disabled selected>Select an option</option>
-                        <option *ngFor="let option of dropdownOptions" [value]="option.link"> {{ option.label }} </option>
-                    </select>
+                    <a class="nav-link" ariaCurrentWhenActive="page" [hidden]="!isAdmin"  routerLink="./create-employee">Add Employee</a>
                 </li>
-            </ul>
-        </div>
+            </ul>     
 
+        </div>
         <div>
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" ariaCurrentWhenActive="page"  routerLink="./users">Users
+                    </a>
+                </li>
                 <li class=" btn-primary nav-item " role="button">
                     <a class="nav-link text-light" (click)="logout()">Logout</a>
                 </li>
             </ul>
         </div>
-
     </div>
 
 </nav>

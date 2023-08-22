@@ -2,6 +2,7 @@ import { CompanyService } from './../../../../services/company.service';
 import { Router } from '@angular/router';
 import { Company } from './../../../../components/models/company';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-company',
@@ -12,7 +13,7 @@ export class CompanyComponent implements OnInit {
 
   companies:Company[]=[];
   
-  constructor(private companyService:CompanyService,private route:Router) { }
+  constructor(private companyService:CompanyService,private route:Router,private authService : AuthService) { }
 
   ngOnInit(): void {
     this.getCompanies();
@@ -28,33 +29,5 @@ export class CompanyComponent implements OnInit {
     this.route.navigate(['admin/view-company-employee', id])
   }
 
-
-
-
-  // company:Company= new Company();;
-  
-  // constructor(private companyService:CompanyService,private router:Router) { }
-
-  // ngOnInit(): void {  }
-  
-
-  // createCompany(){
-  //   this.companyService.createCompany(this.company).subscribe({
-  //     next: (data) => {
-  //       console.log(data)
-  //       alert("company created successfully")
-  //       this.router.navigate(['/user/company']);
-  //     },
-  //     error: (err) => {
-  //       console.log(err)
-  //     }
-  //   })
-  // }
-
-  // onSubmit(){
-  //   this.createCompany()
-  //   console.log(this.company)
-   
-  // }
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from 'src/app/components/models/employee';
+import { Role } from 'src/app/components/models/role.enum';
 import { EmployeeService } from 'src/app/services/employee.service';
+import { UserAuthService } from 'src/app/services/user-auth.service';
 
 
 
@@ -17,7 +19,7 @@ export class UpdateEmployeeComponent implements OnInit {
 
   employee:Employee = new Employee();
 
-  constructor(private employeeService:EmployeeService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private employeeService:EmployeeService,private route:ActivatedRoute,private router:Router,private userAuthService :UserAuthService) { }
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
@@ -43,6 +45,10 @@ export class UpdateEmployeeComponent implements OnInit {
 
   goToEmployeeList(){
     this.router.navigate(['admin/employees'])
+  }
+
+  public get isUser(): boolean{
+    return this.userAuthService.getRoles() == Role.USER;
   }
 
 }

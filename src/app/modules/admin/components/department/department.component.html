@@ -14,10 +14,11 @@
       <td>{{department.id}}</td>
       <td>{{department.departmentName}}</td>
       <td>{{department.departmentDescription}}</td>
+      <td> <button (click)="getEmployeesByDepartmentName(department.id!)" class="btn btn-light"
+        style="margin-left: 10px;">View</button></td>
     </tr>
   </tbody>
   
 </table>
-
 
 

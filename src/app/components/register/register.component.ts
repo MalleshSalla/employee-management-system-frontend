@@ -18,12 +18,24 @@ export class RegisterComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+
   ngOnInit(): void {}
 
   onSubmit(): void {
-    this.authService.register(this.register).subscribe()
-    this.router.navigate(['/login']);
-    alert( " is user is registered")
+    this.authService.register(this.register).subscribe({
+      next: (response) => {
+        console.log(response)
+        alert("user register succefully!")
+        this.router.navigate(['/login'])
+      },
+      error: (err) => {
+        console.log(err)
+        alert("Either user Already registerd or something wrong")
+        window.location.reload()
+      }
+    })
+    
   }
 
 }
+

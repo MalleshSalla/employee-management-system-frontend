@@ -10,36 +10,21 @@ import { UserAuthService } from '../services/user-auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router,
-              private userAuthService:UserAuthService,
-              private authService:AuthService) { }
+  constructor(private userAuthService: UserAuthService, private router: Router) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    if (this.userAuthService.getToken() !== null) {
-      const role = route.data['roles'] as Array<string>;
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    return this.isUserLoggedIn();
+  }
 
-      if (role) {
-        const match = this.authService.roleMatch(role);
-
-        if (match) {
-          return true;
-        } else {
-          this.router.navigate(['/forbidden']);
-          return false;
-        }
-      }
+  private isUserLoggedIn(): boolean {
+    if (this.userAuthService.isUserLoggedIn()) {
+      return true;
     }
-    
-
     this.router.navigate(['/login']);
     return false;
   }
-  
+
 }
+
+
+

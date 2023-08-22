@@ -10,19 +10,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
-    path: 'user',
-    canActivate:[AuthGuard], data:{roles:['User']}
-    ,
-    loadChildren: () =>
-      import('./modules/user/user.module').then((m) => m.UserModule),
-  },
-  {
     path: 'admin',
-    canActivate:[AuthGuard], data:{roles:['Admin','User']}
+    canActivate:[AuthGuard]
     ,
     loadChildren: () =>
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
   },
+  
   { path: '**', component: NotFoundComponent }
 ];
 

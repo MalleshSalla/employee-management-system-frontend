@@ -1,0 +1,33 @@
+<div class="text-center">
+    <h2>Users List</h2>
+    <button (click)="addUser()" [hidden]="!isAdmin"  class="btn btn-info">Add New User</button>
+</div>
+<div class="marginLeftRight">
+    <table class="table table-striped  ">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>UserName</td>
+                <td>Email</td>
+                <td>Role</td>
+                <td [hidden]="isUser" > Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let registerDto of registerDtos">
+                <td>{{registerDto.id}}</td>
+                <td>{{registerDto.name}}</td>
+                <td>{{registerDto.userName}}</td>
+                <td>{{registerDto.email}}</td>
+                <td>{{registerDto.roles}}</td>
+                 <td>
+                    <button (click)="updateUsers(registerDto.id!)" [hidden]="isUser" [disabled]="!isAdminOrManager" class="btn btn-warning">Update/View</button>
+                    <button (click)="deleteUsers(registerDto.id!)" class="btn btn-danger" [hidden]="!isAdminOrManager"
+                        style="margin-left: 10px;">Delete</button>
+                </td> 
+            </tr>
+        </tbody>
+
+    </table>
+</div>

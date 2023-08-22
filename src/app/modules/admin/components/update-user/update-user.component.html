@@ -1,0 +1,43 @@
+<div class="col-md-12">
+
+    <div class="col-md-12">
+        <div class="card card-container">
+            <h3>Update User</h3>
+
+            <form (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <label>Name : </label>
+                    <input type="text" class="form-control" id="name" [disabled]="isUser" [(ngModel)]="user.name"
+                        name="name">
+                </div>
+                <div class="form-group">
+                    <label>UserName : </label>
+                    <input type="text" class="form-control" id="username" [disabled]="isUser"
+                        [(ngModel)]="user.userName" name="username">
+                </div>
+                <div class="form-group">
+                    <label>Email : </label>
+                    <input type="text" class="form-control" id="email" [disabled]="isUser" [(ngModel)]="user.email"
+                        name="email">
+                </div>
+                <div class="form-group">
+                    <label>password : </label>
+                    <input type="text" class="form-control" id="password" [disabled]="isUser"
+                        [(ngModel)]="user.password" name="password">
+                </div>
+
+                <div class="form-group">
+                    <label>Role : </label>
+                    <select name="role" required [(ngModel)]="user.roles" [disabled]="isUser" class="form-control">
+                        <option value="ROLE_USER">USER</option>
+                        <option value="ROLE_HR">HR</option>
+                        <option value="ROLE_MANAGER">MANAGER</option>
+                        <option value="ROLE_ADMIN">ADMIN</option>
+                    </select>
+                </div>
+                <button class="btn btn-success mt-2" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,26 +1,30 @@
+<div class="text-center">
+    <h2>Employee list</h2>
+</div>
+<div class="marginLeftRight">
+    <table class="table table-striped  ">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Salary</td>
+                <td> Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.salary}}</td>
+                <td>
+                    <button (click)="updateEmployee(employee.id!)"  class="btn btn-warning">Update/View</button>
+                    <button (click)="deleteEmployee(employee.id!)" class="btn btn-danger" [hidden]="!isAdminOrManager"
+                        style="margin-left: 10px;">Delete</button>
+                </td>
+            </tr>
+        </tbody>
 
-<h2>Employee  list</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Email</td>
-            <td>Salary</td>
-            <td> Action</td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{employee.id}}</td>
-            <td>{{employee.name}}</td>
-            <td>{{employee.email}}</td>
-            <td>{{employee.salary}}</td>
-            <td>
-                <button (click)="updateEmployee(employee.id!)" class="btn btn-warning">Update</button>
-                <button (click)="deleteEmployee(employee.id!)" class="btn btn-danger" style="margin-left: 10px;">Delete</button>
-                <button (click)="employeeDetails(employee.id!)" class="btn btn-light" style="margin-left: 10px;">View</button>
-            </td>
-        </tr>     
-    </tbody>
-</table>
+    </table>
+</div>

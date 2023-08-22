@@ -7,14 +7,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { CompanyComponent } from './components/company/company.component';
 import { DepartmentComponent } from './components/department/department.component';
 import { EmployeesComponent } from './components/employees/employees.component';
-import { ViewEmployeeComponent } from './components/view-employee/view-employee.component';
 import { ViewCompanyEmployeeComponent } from './components/view-company-employee/view-company-employee.component';
 import { UpdateEmployeeComponent } from './components/update-employee/update-employee.component';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/guards/auth.interceptor';
-import { UserDashboardComponent } from '../user/components/user-dashboard/user-dashboard.component';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
+import { ViewDepartmentEmployeeComponent } from './components/view-department-employee/view-department-employee.component';
+import { UsersComponent } from './components/users/users.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 
@@ -25,16 +28,20 @@ import { UserDashboardComponent } from '../user/components/user-dashboard/user-d
     CompanyComponent,
     DepartmentComponent,
     EmployeesComponent,
-    ViewEmployeeComponent,
     ViewCompanyEmployeeComponent,
-    UpdateEmployeeComponent
-   
+    UpdateEmployeeComponent,
+    CreateEmployeeComponent,
+    ViewDepartmentEmployeeComponent,
+    UsersComponent,
+    UpdateUserComponent,
+    AddUserComponent
   ],
 
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AuthGuard,{
